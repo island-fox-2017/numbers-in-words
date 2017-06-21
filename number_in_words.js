@@ -6,13 +6,13 @@ function numberToWords(number) {
   if (number < 12){
 return words += word[number]
   }else if (number < 20){
-    return words +=word[number-10] + " belas"
+    return numberToWords(number%10) + " belas"
   }else if (number < 100){
-    return words += word[Math.floor(number/10)] + " puluh " + numberToWords(number%10)
+    return numberToWords(Math.floor(number/10)) + " puluh " + numberToWords(number%10)
   }else if (number < 200){
     return words += "seratus " + numberToWords(number%100)
   }else if (number < 1000){
-    return words += word[Math.floor(number/100)] + " ratus " + numberToWords(number%100)
+    return numberToWords(Math.floor(number/100)) + " ratus " + numberToWords(number%100)
   }else if (number < 2000){
     return words += " seribu " + numberToWords(number%1000)
   }else if (number < 1000000){
@@ -27,7 +27,7 @@ return words += word[number]
 }
 
 // Driver code
-console.log(numberToWords(399999999999999));
+console.log(numberToWords(399111));
 
 module.exports = {
   numberToWords: numberToWords
